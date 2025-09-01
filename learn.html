@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamster Haven</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="main.js"></script>
+</head>
+<body>
+
+      <!-- Header -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1 class="logo">Hamster Haven</h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/habitat">Habitat</a></li>
+          <li><a href="/diet">Diet</a></li>
+          <li><a href="/health">Health</a></li>
+          <li><a href="/playtime">Playtime</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+<!-- Learning Intro -->
+<div id="learn-intro" class="active" style="margin-top: 5rem;">
+  <h2>Welcome to Hamster Learning!</h2>
+  <p>Click start to learn about hamsters step by step.</p>
+  <button id="start-learning">Start Learning</button>
+</div>
+
+<!-- Learning Steps -->
+<div id="learn-steps">
+  <div id="learn-content"></div>
+  <div class="step-controls">
+    <button id="prev-step">Previous</button>
+    <button id="next-step">Next</button>
+  </div>
+</div>
+
+<!-- Quiz -->
+<div id="learn-quiz">
+  <div id="quiz-container"></div>
+  <button id="submit-quiz">Submit Quiz</button>
+  <p id="quiz-results"></p>
+</div>
+
+<!-- Templates -->
+<template id="habitat-template">
+  <h2>Habitat</h2>
+  <p>Hamsters need at least 5000 cm² of space, deep bedding, and plenty of hides.</p>
+</template>
+
+<template id="diet-template">
+  <h2>Diet</h2>
+  <p>A balanced seed mix, fresh vegetables, and occasional protein keep hamsters healthy.</p>
+</template>
+
+<template id="health-template">
+  <h2>Health</h2>
+  <p>Check eyes, teeth, and fur regularly. Hamsters hide illness well.</p>
+</template>
+
+<template id="playtime-template">
+  <h2>Playtime</h2>
+  <p>Provide tunnels, sand baths, and safe chew toys for enrichment.</p>
+</template>
+
+
+</body>
+</html>

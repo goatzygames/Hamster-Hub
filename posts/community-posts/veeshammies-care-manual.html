@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamster Blog Post</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" style="height: 10rem; padding-bottom: 2rem;">
+    <div class="container header-flex">
+      <a href="../index.html" style="
+    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
+    display: inline-block; /* Needed if you want to set width, height, padding */
+    padding: 0.5rem 1rem; 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer;
+"><h1 class="logo">Hamster Hub</h1></a>
+      <nav class="nav">
+        <ul>
+          <li><a href="/index/">Home</a></li>
+          <li><a href="/enclosure/">Habitat</a></li>
+          <li><a href="/diet">Diet</a></li>
+          <li><a href="/health/">Health</a></li>
+          <li><a href="/playtime">Playtime</a></li>
+          <li><a href="/index/#blog-section-id">Posts</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+      <div id="imagePopup">
+    <img id="popupImg" src="">
+  </div>
+
+  <div class="container">
+    <!-- Blog Post Box -->
+    <article class="blog-post">
+      <h1 class="post-title">u/veeshammies Care Guide</h1>
+      <p class="post-meta">Published: September 1, 2025</p>
+      <div class="post-content">
+        <h3 style="font-weight:400;">u/veeshammies care guide for hamsters, 2025 edition</h3><br>
+        <img src="https://preview.redd.it/does-anyone-else-think-the-bare-minimum-is-getting-out-of-v0-16ekrs33y3jf1.jpeg?width=3375&auto=webp&s=4a290ad71c2d82fa03606360795b1b335b7eb1a8" style="width: 70%;"><br>
+        <a href="../../index/" class="read-more">Back</a>
+      </div>
+    <!-- Commento Container -->
+<div class="discussion-container">
+  <h2 class="discussion-title">Discussion Board</h2>
+  <p class="discussion-desc">
+    Share your thoughts, ask questions, and join the conversation below.
+  </p>
+
+  <!-- Commento Embed -->
+  <div id="commento"></div>
+  <script defer src="https://cdn.commento.io/js/commento.js"></script>
+</div>
+    </article>
+  </div>
+  <script src="../../main.js"></script>
+
+</body>
+</html>

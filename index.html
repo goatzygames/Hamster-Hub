@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamster Haven</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" style="height: 10rem; padding-bottom: 2rem;">
+    <div class="container header-flex">
+      <a href="../index.html" style="
+    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
+    display: inline-block; /* Needed if you want to set width, height, padding */
+    padding: 0.5rem 1rem; 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer;
+"><h1 class="logo">Hamster Hub</h1></a>
+      <nav class="nav">
+        <ul>
+          <li><a href="/index/">Home</a></li>
+          <li><a href="/enclosure/">Habitat</a></li>
+          <li><a href="/diet">Diet</a></li>
+          <li><a href="/health/">Health</a></li>
+          <li><a href="/playtime">Playtime</a></li>
+          <li><a href="/index/#blog-section-id">Posts</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="margin-top: 5rem;">
+    <div class="hero-content">
+      <h2>Best Care Guides on The Internet!</h2>
+      <p>Here you can learn everything you need to know about providing your cute little hammie the best life!</p>
+      <a href="#startbtn" class="btn" id="startbtn">Start Learning</a>
+    </div>
+  </section>
+
+<!-- Features Section -->
+<section class="features container">
+  <h1 class="section-title" style="font-size: 2.5rem;">Explore the Care Guides</h2>
+  <h2 class="section-intro" style="font-weight: 400;">Quick access to all care guides of this website</p>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <img src="pictures/puur1 - Edited.jpg" alt="Hamster habitat" class="feature-img">
+      <h3>Enclosure</h3>
+      <p>Guide on how to create a suitable living space for your little friend!</p>
+      <a href="/care/enclosure" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card">
+      <img src="pictures/hamster1-Photoroom.png" alt="Hamster habitat" class="feature-img">
+      <h3>Enclosure Essentials
+      </h3>
+      <p>What you need to put inside a hamster enclosure</p>
+      <a href="/care/enclosure-essentials/" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card">
+      <img src="pictures/hamster2-Photoroom.png" alt="Hamster health check" class="feature-img">
+      <h3>Health</h3>
+      <p>Guide on checking if your hamster is healthy based on various symptoms</p>
+      <a href="/health/" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card" style="display: none;">
+      <img src="pictures/hamsterseedmix.png" alt="Hamster diet" class="feature-img">
+      <h3>Diet</h3>
+      <p>How to choose the best seed mix for your hamster</p>
+      <a href="/diet/" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card" style="display: none;">
+      <img src="pictures/hamster2-Photoroom.png" alt="Hamster health check" class="feature-img">
+      <h3>Enrichment</h3>
+      <p>How to make your hamster's live enriching!</p>
+      <a href="/health/" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card" style="display: none;">
+      <img src="pictures/hamster2-Photoroom.png" alt="Hamster health check" class="feature-img">
+      <h3>Behaviours</h3>
+      <p>Guide on various hamster behvarious</p>
+      <a href="/health/" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+
+    <article class="feature-card" style="display: none;">
+      <img src="/assets/images/playtime.jpg" alt="Hamster playtime" class="feature-img">
+      <h3>Playtime</h3>
+      <p>Ideas for toys, tunnels, and activities to reduce boredom.</p>
+      <a href="/playtime" class="btn-card" style="font-size: large;">Open</a>
+    </article>
+  </div>
+</section>
+
+
+
+  <!-- Blog Section -->
+  <section class="blog-section" id="blog-section-id">
+    <div class="container">
+      <h1 class="section-title" style="font-size: 2.5rem;">Posts</h1>
+      <h2 class="section-intro" style="font-weight:400;">Many different posts discussing everything hamster!</h2>
+
+      <div id="blog-container" class="blog-grid">
+        <!-- Blog cards will be injected here dynamically -->
+        <!-- Example structure for a blog card:
+        <article class="blog-card">
+          <img src="hamster1.jpg" alt="Hamster running on wheel">
+          <div class="blog-card-content">
+            <h3>How to Choose the Right Wheel</h3>
+            <p>Not all wheels are safe for hamsters — here’s what to look for.</p>
+            <a href="/blog/wheel-guide" class="link">Read More →</a>
+          </div>
+        </article>
+        -->
+      </div>
+    </div>
+  </section>
+
+    <!-- Community Care Manuals -->
+  <section class="community-manuals">
+    <div class="container">
+      <h1 class="section-title small" style="font-size: 2rem;">Community Care Manuals</h1>
+      <div class="manuals-scroll" id="manuals-scroll">
+        <!-- Example manuals (these can be added dynamically later) -->
+        <article class="manual-card">
+          <h3>🐹 2025 Hamster Care Guide</h3>
+          <p><a href="https://www.reddit.com/user/veeshammies" style="
+    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
+    display: inline-block; /* Needed if you want to set width, height, padding */ 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer;
+">u/veeshammies</a> care guide on Reddit</p>
+          <a href="posts/community-posts/veeshammies-care-manual/" class="link">Open →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Hamster Hub | Made by <a href="https://www.goatzy.games" target="_blank">Goatzy Games</a> | 100% Not Ai </p>
+    </div>
+  </footer>
+
+    <div id="imagePopup">
+    <img id="popupImg" src="">
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
