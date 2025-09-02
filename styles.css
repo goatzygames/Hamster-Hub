@@ -1093,7 +1093,7 @@ html {
 #commento {
   margin: 3rem auto;
   padding: 2rem;
-  background: var(--warm-brown); /* light neutral background */
+  background: var(--light-sand); /* light neutral background */
   border-radius: 1rem; /* rounded corners */
   box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* soft shadow */
 }
