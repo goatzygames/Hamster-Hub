@@ -15,13 +15,13 @@ navToggle?.addEventListener("click", () => {
       {
         title: "Feedback Post",
         desc: "Post where you can give feedback about the whole site.",
-        img: "pictures/lovepik-panda-hamster-with-a-question-mark-png-image_401554068_wh1200-Photoroom.png",
+        img: "pictures/need-your-feedback-3-v0-7yy67s6tshec1.png",
         link: "posts/feedback-post/"
       },
       {
         title: "Test Post",
         desc: "Test",
-        img: "pictures/lovepik-panda-hamster-with-a-question-mark-png-image_401554068_wh1200-Photoroom.png",
+        img: "pictures/need-your-feedback-3-v0-7yy67s6tshec1.png",
         link: "posts/test-post/"
       },
     ];

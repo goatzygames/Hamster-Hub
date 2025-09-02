@@ -12,68 +12,82 @@ permalink: /contact/
   <title>Contact Us</title>
   <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
   <style>
-    .contact-container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+.contact-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff8f0; /* soft warm background */
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0c9a6; /* subtle border matching bedding/hay */
+}
 
-    .contact-container h1 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #333;
-    }
+.contact-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #5a3e2b; /* natural dark brown */
+  font-family: "Georgia", serif;
+}
 
-    .contact-container p {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #666;
-    }
+.contact-container p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #7a5c44; /* warm brownish tone */
+  font-size: 1rem;
+}
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    .contact-form label {
-      font-weight: bold;
-      color: #444;
-    }
+.contact-form label {
+  font-weight: bold;
+  color: #4d3b2a; /* earthy brown */
+}
 
-    .contact-form input,
-    .contact-form textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #d3b58f;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fffdf9;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #b68b5e;
+  box-shadow: 0 0 6px rgba(182, 139, 94, 0.4);
+  outline: none;
+}
 
-    .contact-form button {
-      background: #0077cc;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
-    .contact-form button:hover {
-      background: #005fa3;
-    }
+.contact-form button {
+  background: #b68b5e; /* warm nut brown */
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.contact-form button:hover {
+  background: #8d6a46; /* darker brown */
+  transform: translateY(-2px);
+}
+
   </style>
 </head>
 <body>
