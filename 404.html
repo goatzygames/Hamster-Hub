@@ -1,6 +1,7 @@
 ---
 layout: none
 title: 404
+permalink: /404/
 ---
 
 <!DOCTYPE html>
@@ -70,11 +71,35 @@ title: 404
   </style>
 </head>
 <body>
+      <!-- Header -->
+  <header class="site-header" style="height: 10rem; padding-bottom: 2rem;">
+    <div class="container header-flex">
+      <a href="/" style="
+    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
+    display: inline-block; /* Needed if you want to set width, height, padding */
+    padding: 0.5rem 1rem; 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer;
+"><h1 class="logo">Hamster Hub</h1></a>
+      <nav class="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/enclosure/">Habitat</a></li>
+          <li><a href="/404/">Diet</a></li>
+          <li><a href="/health/">Health</a></li>
+          <li><a href="/#blog-section-id">Posts</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
 
   <div class="error-container">
     <h1>404</h1>
     <p>Oops! This page doesn't exist.</p>
-    <a href="index.html" class="btn-home">Go Back Home</a>
+    <a href="/" class="btn-home">Go Back Home</a>
   </div>
 
 </body>

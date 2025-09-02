@@ -1128,7 +1128,6 @@ html {
 
 /* Main discussion box */
 .discussion-container {
-  max-width: 800px;
   margin: 4rem auto;
   padding: 2rem;
   background: #f9fafb; /* soft light background */
