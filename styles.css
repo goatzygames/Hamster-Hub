@@ -1091,6 +1091,7 @@ html {
 
 /* Wrap Commento in a styled box */
 #commento {
+  width: 80%;
   margin: 3rem auto;
   padding: 2rem;
   background: var(--light-sand); /* light neutral background */
