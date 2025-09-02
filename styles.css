@@ -1119,14 +1119,6 @@ html {
   text-decoration: underline;
 }
 
-/* Improve mobile layout */
-@media (max-width: 640px) {
-  #commento {
-    padding: 1.25rem;
-    margin: 2rem 1rem;
-  }
-}
-
 /* Main discussion box */
 .discussion-container {
   margin: 4rem auto;
@@ -1135,6 +1127,19 @@ html {
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
+
+/* Improve mobile layout */
+@media (max-width: 640px) {
+  #commento {
+    width: 100%;
+    padding: 1.25rem;
+    margin: 2rem 1rem;
+  }
+  .discussion-container {
+    padding: 0rem;
+  }
+}
+
 
 /* Title */
 .discussion-title {
