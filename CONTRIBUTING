@@ -1,0 +1,16 @@
+# Contributing to Hamster Care Website 🐹
+
+Thanks for wanting to help improve this project!
+
+## How to contribute
+1. Fork the repo
+2. Create a new branch (`git checkout -b feature-name`)
+3. Make your changes
+4. Commit (`git commit -m "Added new feature"`)
+5. Push to your fork
+6. Open a Pull Request
+
+## Rules
+- Keep code clean and well-commented
+- Stick to the existing style (HTML/CSS layout)
+- All contributions must give credit to original author (Goatzy)
