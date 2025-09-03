@@ -215,6 +215,34 @@ body {
   margin-top: 3rem;
 }
 
+/* Footer */
+.site-footer {
+  background: var(--forest-green);
+  color: var(--light-text);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer .license {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-top: 0.3rem;
+}
+
+
 /* Responsive nav */
 @media (max-width: 768px) {
   .nav ul {
