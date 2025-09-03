@@ -224,9 +224,19 @@ body {
   margin-top: 3rem;
   font-size: 0.95rem;
   line-height: 1.6;
+  font-size: larger;
 }
 
 .site-footer a {
+  all: unset;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  text-decoration: dotted;
+  font-size: larger;
+}
+
+.site-footer p {
   all: unset;
   color: var(--accent-color);
   text-decoration: none;
