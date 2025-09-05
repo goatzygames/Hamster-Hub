@@ -1216,3 +1216,48 @@ html {
     margin: 2rem 1rem;
   }
 }
+
+.spoiler-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.spoiler-container img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  filter: blur(12px); /* initial blur */
+  transition: filter 0.4s ease;
+}
+
+/* Cover text */
+.spoiler-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  border-radius: 8px;
+  transition: opacity 0.4s ease;
+}
+
+/* When revealed */
+.spoiler-container.revealed img {
+  filter: blur(0);
+}
+
+.spoiler-container.revealed .spoiler-cover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#no-style-a {
+  all: unset;
+  font-weight: 500;
+  color: #0ca05d;  
+}
