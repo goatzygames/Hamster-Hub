@@ -1261,3 +1261,28 @@ html {
   font-weight: 500;
   color: #0ca05d;  
 }
+
+.care-hero {
+  position: relative;
+  width: 100%;
+  min-height: 300px; /* you can adjust height */
+  background: url('../pictures/puur1 - Edited.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 4px solid var(--soft-green);
+}
+
+.care-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35); /* dark overlay for text readability */
+}
+
+.care-hero-content {
+  position: relative;
+  color: white;
+  padding: 2rem;
+  max-width: 900px; /* keeps text centered/narrower */
+}
