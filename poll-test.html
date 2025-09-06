@@ -25,109 +25,18 @@ body { font-family:"Segoe UI",sans-serif; background:var(--sand); color:var(--da
 </head>
 <body>
 
-<h2>Which game engine do you prefer?</h2>
-<div class="options-container" id="options"></div>
-<h3 id="totals"></h3>
+<!-- Where poll will render -->
+<div id="poll"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getDatabase, ref, get, runTransaction } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+  import { createPoll } from "./main.js";
 
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyCb9A2wqpcg8K3gJmNg7F1hPqInp2910u8",
-  authDomain: "hamster-hub-1.firebaseapp.com",
-  projectId: "hamster-hub-1",
-  storageBucket: "hamster-hub-1.firebasestorage.app",
-  messagingSenderId: "833563548088",
-  appId: "1:833563548088:web:bca8dc2a69b4de5d49d74d"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
-
-// Poll config
-const POLL_ID = 'favourite-engine-ue5';
-const OPTIONS = ['Unreal Engine 5','Unity','Godot','Other'];
-const votedKey = `voted_${POLL_ID}`;
-let voted = localStorage.getItem(votedKey);
-
-const optionsContainer = document.getElementById('options');
-const totals = document.getElementById('totals');
-
-function renderOptions() {
-  optionsContainer.innerHTML = '';
-  if(voted) {
-    renderResults();
-    return;
-  }
-
-  OPTIONS.forEach(opt => {
-    const card = document.createElement('div');
-    card.className = 'option-card';
-    card.textContent = opt;
-    card.onclick = () => vote(opt);
-    optionsContainer.appendChild(card);
+  createPoll({
+    containerId: "poll",
+    pollId: "what-hamster-you-like-the-best",
+    question: "What hamster do you like the best?",
+    options: ["Syrian Hamster", "DJ Hamster", "Russian Hamster", "Chinese Hamster"]
   });
-}
-
-async function vote(option){
-  const voteRef = ref(db, `polls/${POLL_ID}/${option}`);
-  await runTransaction(voteRef, current => (current||0)+1);
-  localStorage.setItem(votedKey, option);
-  voted = option;
-  renderResults();
-}
-
-async function renderResults(){
-  const pollRef = ref(db, `polls/${POLL_ID}`);
-  const snapshot = await get(pollRef);
-  const data = snapshot.val() || {};
-  const totalVotes = Object.values(data).reduce((a,b)=>a+b,0);
-
-  optionsContainer.innerHTML = '';
-
-  OPTIONS.forEach(opt => {
-    const count = data[opt] || 0;
-    const pct = totalVotes ? Math.round(count/totalVotes*100) : 0;
-
-    // Create a wrapper for text + bar
-    const wrapper = document.createElement('div');
-    wrapper.style.display = 'flex';
-    wrapper.style.flexDirection = 'column';
-    wrapper.style.marginBottom = '1rem';
-
-    // Option text
-    const optionText = document.createElement('div');
-    optionText.textContent = opt;
-    optionText.style.fontWeight = '600';
-    optionText.style.marginBottom = '0.2rem';
-    wrapper.appendChild(optionText);
-
-    // Bar container
-    const container = document.createElement('div');
-    container.className = 'bar-container';
-
-    const bar = document.createElement('div');
-    bar.className = 'bar';
-    bar.style.width = pct + '%';
-
-    const label = document.createElement('div');
-    label.className = 'bar-label';
-    label.textContent = `${count} votes (${pct}%)`;
-
-    container.appendChild(bar);
-    container.appendChild(label);
-    wrapper.appendChild(container);
-
-    optionsContainer.appendChild(wrapper);
-  });
-
-  totals.textContent = `Total votes: ${totalVotes}`;
-}
-
-
-renderOptions();
 </script>
 
 </body>
