@@ -1,176 +1,135 @@
----
-layout: none
-title: Test Post
-permalink: /posts/test-post/
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamster Hub | Post</title>
-  <link rel="stylesheet" href="{{ '../../../styles.css' | relative_url }}">
-    <link rel="icon" href="/pictures/hamstericon1.ico" type="image/x-icon">
-
-    <style>
-/*    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 2rem auto;
-    } */
-
-    /* Blog Post Box */
-    .blog-post {
-      background: #fff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      padding: 2rem;
-      margin-bottom: 3rem;
-      margin-top: 2rem;
-    }
-
-    .post-title {
-      font-size: 2rem;
-      color: #5c8d77;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .post-meta {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 1.5rem;
-    }
-
-    .post-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .post-content {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    .post-content h2 {
-      color: #5c8d77;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .post-content p {
-      margin-bottom: 1rem;
-    }
-
-    .post-content ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .read-more {
-      display: inline-block;
-      margin-top: 1.5rem;
-      background: #a9cbb7;
-      color: #2c2c2c;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .read-more:hover {
-      background: #5c8d77;
-      color: #fff;
-      transform: translateY(-2px);
-    }
-    .blog-post {
-  background: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  padding: 2rem;
-  margin-bottom: 3rem;
-  position: relative;
-  overflow: hidden;
+<meta charset="UTF-8">
+<title>Styled Global Poll</title>
+<style>
+:root {
+  --soft-green: #a9cbb7;
+  --forest-green: #5c8d77;
+  --warm-brown: #8b6b4a;
+  --sand: #f5f0e1;
+  --light-sand: #faf7f2;
+  --dark-text: #2c2c2c;
+  --light-text: #ffffff;
 }
 
-/* Gradient overlay at the bottom */
-.blog-post::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* adjust height of gradient */
-  background: linear-gradient(to top, #a9cbb7, rgba(255,255,255,0));
-  pointer-events: none; /* so it doesn’t block text */
-}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Segoe UI",sans-serif; background:var(--sand); color:var(--dark-text); display:flex; flex-direction:column; align-items:center; padding:40px; line-height:1.6; }
 
-  </style>
-  
+h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
+
+.options-container { display:flex; flex-direction:column; gap:1rem; width:320px; }
+
+.option-card {
+  background: var(--light-sand);
+  border-radius:12px;
+  padding:1rem 1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight:600;
+  color:var(--dark-text);
+  font-size:1rem;
+}
+.option-card:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,0.1); }
+
+.bar-container { width:100%; background:#eee; border-radius:12px; height:28px; position:relative; margin-bottom:0.8rem; overflow:hidden; }
+.bar { height:100%; background:var(--forest-green); width:0%; border-radius:12px; transition: width 0.5s ease; }
+.bar-label { position:absolute; width:100%; text-align:center; line-height:28px; color:var(--dark-text); font-weight:700; }
+
+#totals { margin-top:1rem; font-weight:600; }
+
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header" style="height: 10rem; padding-bottom: 2rem;">
-    <div class="container header-flex">
-      <a href="/" style="
-    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
-    display: inline-block; /* Needed if you want to set width, height, padding */
-    padding: 0.5rem 1rem; 
-    text-decoration: none; 
-    font-weight: bold; 
-    cursor: pointer;
-"><h1 class="logo">Hamster Hub</h1></a>
-      <nav class="nav">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/enclosure/">Enclosure</a></li>
-          <li><a href="/404/">Diet</a></li>
-          <li><a href="/health/">Health</a></li>
-          <li><a href="/#blog-section-id">Posts</a></li>
-          <li><a href="/contact/">Contact</a></li>
-        </ul>
-        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-      </nav>
-    </div>
-  </header>
 
-  <div class="container">
-    <!-- Blog Post Box -->
-    <article class="blog-post">
-      <h1 class="post-title">Test Post</h1>
-      <p class="post-meta">Published: September 1, 2025</p>
-      <div class="post-content">
-        <h2 style="font-weight:400;">A post testing the post section.</h2>
-        <a href="../index/" class="read-more">Back</a>
-            <!-- Commento Container -->
-<div class="discussion-container">
-  <h2 class="discussion-title">Discussion Board</h2>
-  <p class="discussion-desc">
-    Share your thoughts, ask questions, and join the conversation below.
-  </p>
+<h2>Which game engine do you prefer?</h2>
+<div class="options-container" id="options"></div>
+<h3 id="totals"></h3>
 
-  <!-- Commento Embed -->
-  <div id="commento"></div>
-  <script defer src="https://cdn.commento.io/js/commento.js"></script>
-</div>
-      </div>
-    </article>
-  </div>
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Hamster Hub | Made by <a href="https://www.goatzy.games" target="_blank">Goatzy Games</a> | <a href="/contact/" style="
-    all: unset;          /* Reset everything: color, padding, margin, font, etc. */
-    display: inline-block; /* Needed if you want to set width, height, padding */ 
-    text-decoration: none; 
-    cursor: pointer;
-">Contact</a> </p>
-    </div>
-  </footer>
-  <script src="{{ '/main.js' | absolute_url }}"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { getDatabase, ref, get, runTransaction } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyCb9A2wqpcg8K3gJmNg7F1hPqInp2910u8",
+  authDomain: "hamster-hub-1.firebaseapp.com",
+  projectId: "hamster-hub-1",
+  storageBucket: "hamster-hub-1.firebasestorage.app",
+  messagingSenderId: "833563548088",
+  appId: "1:833563548088:web:bca8dc2a69b4de5d49d74d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
+
+// Poll config
+const POLL_ID = 'favourite-engine-ue5';
+const OPTIONS = ['Unreal Engine 5','Unity','Godot','Other'];
+const votedKey = `voted_${POLL_ID}`;
+let voted = localStorage.getItem(votedKey);
+
+const optionsContainer = document.getElementById('options');
+const totals = document.getElementById('totals');
+
+function renderOptions() {
+  optionsContainer.innerHTML = '';
+  if(voted) {
+    renderResults();
+    return;
+  }
+
+  OPTIONS.forEach(opt => {
+    const card = document.createElement('div');
+    card.className = 'option-card';
+    card.textContent = opt;
+    card.onclick = () => vote(opt);
+    optionsContainer.appendChild(card);
+  });
+}
+
+async function vote(option){
+  const voteRef = ref(db, `polls/${POLL_ID}/${option}`);
+  await runTransaction(voteRef, current => (current||0)+1);
+  localStorage.setItem(votedKey, option);
+  voted = option;
+  renderResults();
+}
+
+async function renderResults(){
+  const pollRef = ref(db, `polls/${POLL_ID}`);
+  const snapshot = await get(pollRef);
+  const data = snapshot.val() || {};
+  const totalVotes = Object.values(data).reduce((a,b)=>a+b,0);
+
+  optionsContainer.innerHTML = '';
+  OPTIONS.forEach(opt => {
+    const count = data[opt] || 0;
+    const pct = totalVotes ? Math.round(count/totalVotes*100) : 0;
+
+    const container = document.createElement('div');
+    container.className = 'bar-container';
+
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.width = pct + '%';
+
+    const label = document.createElement('div');
+    label.className = 'bar-label';
+    label.textContent = `${opt}: ${count} (${pct}%)`;
+
+    container.appendChild(bar);
+    container.appendChild(label);
+    optionsContainer.appendChild(container);
+  });
+
+  totals.textContent = `Total votes: ${totalVotes}`;
+}
+
+renderOptions();
+</script>
+
 </body>
 </html>
