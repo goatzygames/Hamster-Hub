@@ -19,37 +19,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"Segoe UI",sans-serif; background:var(--sand); color:var(--dark-text); display:flex; flex-direction:column; align-items:center; padding:40px; line-height:1.6; }
 
-h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
 
-.options-container { display:flex; flex-direction:column; gap:1rem; width:320px; }
-
-.option-card {
-  background: var(--light-sand);
-  border-radius:12px;
-  padding:1rem 1.5rem;
-  text-align:center;
-  cursor:pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  font-weight:600;
-  color:var(--dark-text);
-  font-size:1rem;
-}
-.option-card:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,0.1); }
-
-.bar-container { width:100%; background:#eee; border-radius:12px; height:28px; position:relative; margin-bottom:0.8rem; overflow:hidden; }
-.bar { height:100%; background:var(--forest-green); width:0%; border-radius:12px; transition: width 0.5s ease; }
-.bar-label { position:absolute; width:100%; text-align:center; line-height:28px; color:var(--dark-text); font-weight:700; }
-.bar-label {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  line-height: 28px;
-  font-weight:700;
-  color: var(--light-text); /* contrast on dark bar */
-}
-
-
-#totals { margin-top:1rem; font-weight:600; }
 
 </style>
 </head>
