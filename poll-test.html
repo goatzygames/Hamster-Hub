@@ -2,28 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Global Poll</title>
+<title>Styled Global Poll</title>
+  <link rel="stylesheet" href="{{ '../../../styles.css' | relative_url }}">
+    <link rel="icon" href="/pictures/hamstericon1.ico" type="image/x-icon">
 <style>
-  body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px; background: #f0f0f0; }
-  h2 { margin-bottom: 20px; }
-  .option { margin: 5px 0; padding: 10px 20px; background: #fff; border-radius: 8px; cursor: pointer; width: 300px; text-align: center; }
-  .option:hover { background: #ddeeff; }
-  .bar-container { width: 300px; background: #eee; border-radius: 8px; margin: 5px 0; height: 24px; position: relative; }
-  .bar { background: #3b82f6; height: 100%; width: 0%; border-radius: 8px; transition: width 0.5s; }
-  .bar-label { position: absolute; width: 100%; text-align: center; line-height: 24px; color: #000; font-weight: bold; }
+:root {
+  --soft-green: #a9cbb7;
+  --forest-green: #5c8d77;
+  --warm-brown: #8b6b4a;
+  --sand: #f5f0e1;
+  --light-sand: #faf7f2;
+  --dark-text: #2c2c2c;
+  --light-text: #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Segoe UI",sans-serif; background:var(--sand); color:var(--dark-text); display:flex; flex-direction:column; align-items:center; padding:40px; line-height:1.6; }
+
+h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
+
+.options-container { display:flex; flex-direction:column; gap:1rem; width:320px; }
+
+.option-card {
+  background: var(--light-sand);
+  border-radius:12px;
+  padding:1rem 1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight:600;
+  color:var(--dark-text);
+  font-size:1rem;
+}
+.option-card:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,0.1); }
+
+.bar-container { width:100%; background:#eee; border-radius:12px; height:28px; position:relative; margin-bottom:0.8rem; overflow:hidden; }
+.bar { height:100%; background:var(--forest-green); width:0%; border-radius:12px; transition: width 0.5s ease; }
+.bar-label { position:absolute; width:100%; text-align:center; line-height:28px; color:var(--dark-text); font-weight:700; }
+
+#totals { margin-top:1rem; font-weight:600; }
+
 </style>
 </head>
 <body>
 
 <h2>Which game engine do you prefer?</h2>
-<div id="options"></div>
+<div class="options-container" id="options"></div>
 <h3 id="totals"></h3>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getDatabase, ref, get, runTransaction } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
-// ===== Firebase config =====
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCb9A2wqpcg8K3gJmNg7F1hPqInp2910u8",
   authDomain: "hamster-hub-1.firebaseapp.com",
@@ -33,13 +64,10 @@ const firebaseConfig = {
   appId: "1:833563548088:web:bca8dc2a69b4de5d49d74d"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Regional URL for your Realtime Database
 const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
 
-// ===== Poll config =====
+// Poll config
 const POLL_ID = 'favourite-engine-ue5';
 const OPTIONS = ['Unreal Engine 5','Unity','Godot','Other'];
 const votedKey = `voted_${POLL_ID}`;
@@ -48,24 +76,22 @@ let voted = localStorage.getItem(votedKey);
 const optionsContainer = document.getElementById('options');
 const totals = document.getElementById('totals');
 
-// Render buttons if user hasn't voted
 function renderOptions() {
   optionsContainer.innerHTML = '';
   if(voted) {
-    renderResults(); // already voted, show results
+    renderResults();
     return;
   }
 
   OPTIONS.forEach(opt => {
-    const btn = document.createElement('div');
-    btn.textContent = opt;
-    btn.className = 'option';
-    btn.onclick = () => vote(opt);
-    optionsContainer.appendChild(btn);
+    const card = document.createElement('div');
+    card.className = 'option-card';
+    card.textContent = opt;
+    card.onclick = () => vote(opt);
+    optionsContainer.appendChild(card);
   });
 }
 
-// Handle voting
 async function vote(option){
   const voteRef = ref(db, `polls/${POLL_ID}/${option}`);
   await runTransaction(voteRef, current => (current||0)+1);
@@ -74,7 +100,6 @@ async function vote(option){
   renderResults();
 }
 
-// Render results with bars
 async function renderResults(){
   const pollRef = ref(db, `polls/${POLL_ID}`);
   const snapshot = await get(pollRef);
@@ -105,7 +130,6 @@ async function renderResults(){
   totals.textContent = `Total votes: ${totalVotes}`;
 }
 
-// Initial render
 renderOptions();
 </script>
 
