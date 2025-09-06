@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title>Global Poll</title>
 <style>
-  body { font-family:sans-serif; display:flex; flex-direction:column; align-items:center; padding:40px; background:#f0f0f0; }
-  h2 { margin-bottom:20px; }
-  .option { margin:5px 0; padding:10px 20px; background:#fff; border-radius:8px; cursor:pointer; width:300px; text-align:center; }
-  .option:hover { background:#ddeeff; }
-  .bar-container { width:300px; background:#eee; border-radius:8px; margin:5px 0; height:24px; position:relative; }
-  .bar { background:#3b82f6; height:100%; width:0%; border-radius:8px; transition: width 0.5s; }
-  .bar-label { position:absolute; width:100%; text-align:center; line-height:24px; color:#000; font-weight:bold; }
+  body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px; background: #f0f0f0; }
+  h2 { margin-bottom: 20px; }
+  .option { margin: 5px 0; padding: 10px 20px; background: #fff; border-radius: 8px; cursor: pointer; width: 300px; text-align: center; }
+  .option:hover { background: #ddeeff; }
+  .bar-container { width: 300px; background: #eee; border-radius: 8px; margin: 5px 0; height: 24px; position: relative; }
+  .bar { background: #3b82f6; height: 100%; width: 0%; border-radius: 8px; transition: width 0.5s; }
+  .bar-label { position: absolute; width: 100%; text-align: center; line-height: 24px; color: #000; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -36,47 +36,51 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// IMPORTANT: use the full regional URL for your DB
+// Regional URL for your Realtime Database
 const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
 
 // ===== Poll config =====
 const POLL_ID = 'favourite-engine-ue5';
 const OPTIONS = ['Unreal Engine 5','Unity','Godot','Other'];
 const votedKey = `voted_${POLL_ID}`;
-const voted = localStorage.getItem(votedKey);
+let voted = localStorage.getItem(votedKey);
 
 const optionsContainer = document.getElementById('options');
 const totals = document.getElementById('totals');
 
-function renderOptions(){
+// Render buttons if user hasn't voted
+function renderOptions() {
   optionsContainer.innerHTML = '';
+  if(voted) {
+    renderResults(); // already voted, show results
+    return;
+  }
+
   OPTIONS.forEach(opt => {
     const btn = document.createElement('div');
     btn.textContent = opt;
     btn.className = 'option';
-    if(voted) btn.style.opacity = 0.5;
     btn.onclick = () => vote(opt);
     optionsContainer.appendChild(btn);
   });
 }
 
+// Handle voting
 async function vote(option){
-  if(voted) { alert('You already voted!'); return; }
   const voteRef = ref(db, `polls/${POLL_ID}/${option}`);
   await runTransaction(voteRef, current => (current||0)+1);
   localStorage.setItem(votedKey, option);
-  renderOptions();
+  voted = option;
   renderResults();
 }
 
+// Render results with bars
 async function renderResults(){
   const pollRef = ref(db, `polls/${POLL_ID}`);
   const snapshot = await get(pollRef);
   const data = snapshot.val() || {};
   const totalVotes = Object.values(data).reduce((a,b)=>a+b,0);
-  totals.textContent = `Total votes: ${totalVotes}`;
 
-  // Render bars
   optionsContainer.innerHTML = '';
   OPTIONS.forEach(opt => {
     const count = data[opt] || 0;
@@ -97,10 +101,12 @@ async function renderResults(){
     container.appendChild(label);
     optionsContainer.appendChild(container);
   });
+
+  totals.textContent = `Total votes: ${totalVotes}`;
 }
 
+// Initial render
 renderOptions();
-renderResults();
 </script>
 
 </body>
