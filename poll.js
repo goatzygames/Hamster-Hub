@@ -84,7 +84,7 @@ async function renderResults() {
     optionText.style.marginBottom = "0.2rem";
     wrapper.appendChild(optionText);
 
-    // Horizontal container: bar + percentage
+    // Horizontal container: bar + votes text
     const row = document.createElement("div");
     row.style.display = "flex";
     row.style.alignItems = "center";
@@ -99,22 +99,22 @@ async function renderResults() {
     bar.className = "bar";
     bar.style.width = pct + "%";
 
-    // Label inside bar = vote count only
+    // Label inside bar = raw vote count
     const label = document.createElement("div");
     label.className = "bar-label";
-    label.textContent = count; // just number of votes
+    label.textContent = count;
 
     barContainer.appendChild(bar);
     barContainer.appendChild(label);
 
-    // Percentage text outside the bar
-    const pctText = document.createElement("div");
-    pctText.textContent = `${pct}%`;
-    pctText.style.minWidth = "40px";
-    pctText.style.fontWeight = "600";
+    // Votes text outside the bar
+    const votesText = document.createElement("div");
+    votesText.textContent = `${count} votes`;
+    votesText.style.minWidth = "60px";
+    votesText.style.fontWeight = "600";
 
     row.appendChild(barContainer);
-    row.appendChild(pctText);
+    row.appendChild(votesText);
 
     wrapper.appendChild(row);
     optionsContainer.appendChild(wrapper);
