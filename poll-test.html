@@ -64,14 +64,19 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
   });
 </script>
 
-<div id="vote-container" class="vote-container">
-<div id="page-vote"></div>
-<script type="module">
-  import { createVote } from './votes.js';
-  createVote('page-vote', 'home-page'); // unique voteId per page
-</script>
-</div>
+<!-- Where poll will render -->
+<div id="voting"></div>
 
+<script type="module">
+  import { createPoll } from "./poll.js";
+
+  createPoll({
+    containerId: "voting",
+    pollId: "voting-test",
+    question: "",
+    options: ["▲", "▼"]
+  });
+</script>
 
 </body>
 </html>
