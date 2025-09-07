@@ -95,12 +95,17 @@ span {
   });
 </script>
 
-<div id="vote-container">
-  <button id="upvote" class="vote-btn">👍</button>
-  <span id="upvote-count">0</span>
-  <button id="downvote" class="vote-btn">👎</button>
-  <span id="downvote-count">0</span>
+<div id="vote-container" style="display: flex; gap: 10px; align-items: center;">
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <button id="upvote" class="vote-btn">👍</button>
+    <span id="upvote-count">0</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <button id="downvote" class="vote-btn">👎</button>
+    <span id="downvote-count">0</span>
+  </div>
 </div>
+
 
 <script type="module">
   import { createVote } from './votes.js';
