@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 // Prevent duplicate app initialization
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-const db = getDatabase(app, "https://YOUR_PROJECT-default-rtdb.europe-west1.firebasedatabase.app");
+const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
 
 export function createVote(containerId, voteId) {
   const container = document.getElementById(containerId);
