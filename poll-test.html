@@ -21,6 +21,30 @@ body { font-family:"Segoe UI",sans-serif; background:var(--sand); color:var(--da
 
 h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
 
+.vote-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.vote-btn {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.vote-btn:hover {
+  background-color: #ddd;
+}
+
+.vote-count {
+  font-weight: 600;
+}
+
 
 </style>
 </head>
@@ -39,6 +63,15 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
     options: ["Syrian Hamster", "DJ Hamster", "Russian Hamster", "Chinese Hamster"]
   });
 </script>
+
+<div id="vote-container" class="vote-container">
+<div id="page-vote"></div>
+<script type="module">
+  import { createVote } from './votes.js';
+  createVote('page-vote', 'home-page'); // unique voteId per page
+</script>
+</div>
+
 
 </body>
 </html>
