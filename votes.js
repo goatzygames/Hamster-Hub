@@ -1,4 +1,4 @@
-import { getApps, initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getDatabase, ref, get, runTransaction } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
 // --- Firebase Config ---
@@ -11,113 +11,40 @@ const firebaseConfig = {
   appId: "1:833563548088:web:bca8dc2a69b4de5d49d74d"
 };
 
-// Use existing app if initialized, otherwise create new one
+// Prevent duplicate app initialization
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-const db = getDatabase(app, "https://hamster-hub-1-default-rtdb.europe-west1.firebasedatabase.app");
+const db = getDatabase(app, "https://YOUR_PROJECT-default-rtdb.europe-west1.firebasedatabase.app");
 
-// --- Poll function ---
-export function createPoll({ containerId, pollId, question, options }) {
+export function createVote(containerId, voteId) {
   const container = document.getElementById(containerId);
-  if (!container) return console.error(`Poll container #${containerId} not found`);
+  if (!container) return;
 
-  container.innerHTML = "";
+  const upBtn = container.querySelector('#upvote');
+  const downBtn = container.querySelector('#downvote');
+  const upCount = container.querySelector('#upvote-count');
+  const downCount = container.querySelector('#downvote-count');
 
-  const votedKey = `voted_${pollId}`;
+  const votedKey = `voted_${voteId}`;
   let voted = localStorage.getItem(votedKey);
 
-  const title = document.createElement("h2");
-  title.textContent = question;
-  container.appendChild(title);
-
-  const optionsContainer = document.createElement("div");
-  optionsContainer.className = "options-container";
-  container.appendChild(optionsContainer);
-
-  const totals = document.createElement("h3");
-  totals.id = `totals-${pollId}`;
-  container.appendChild(totals);
-
-  function renderOptions() {
-    optionsContainer.innerHTML = "";
-    if (voted) {
-      renderResults();
-      return;
-    }
-
-    options.forEach(opt => {
-      const card = document.createElement("div");
-      card.className = "option-card";
-      card.textContent = opt;
-      card.onclick = () => vote(opt);
-      optionsContainer.appendChild(card);
-    });
+  async function updateCounts() {
+    const snap = await get(ref(db, `votes/${voteId}`));
+    const data = snap.val() || { up: 0, down: 0 };
+    upCount.textContent = data.up;
+    downCount.textContent = data.down;
   }
 
-  async function vote(option) {
-    const voteRef = ref(db, `polls/${pollId}/${option}`);
+  async function vote(type) {
+    if (voted) return; // only vote once per user
+    const voteRef = ref(db, `votes/${voteId}/${type}`);
     await runTransaction(voteRef, current => (current || 0) + 1);
-    localStorage.setItem(votedKey, option);
-    voted = option;
-    renderResults();
+    localStorage.setItem(votedKey, type);
+    voted = type;
+    updateCounts();
   }
 
-  async function renderResults() {
-    const pollRef = ref(db, `polls/${pollId}`);
-    const snapshot = await get(pollRef);
-    const data = snapshot.val() || {};
-    const totalVotes = Object.values(data).reduce((a, b) => a + b, 0);
+  upBtn.onclick = () => vote('up');
+  downBtn.onclick = () => vote('down');
 
-    optionsContainer.innerHTML = "";
-
-    options.forEach(opt => {
-      const count = data[opt] || 0;
-      const pct = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
-
-      const wrapper = document.createElement("div");
-      wrapper.style.display = "flex";
-      wrapper.style.flexDirection = "column";
-      wrapper.style.marginBottom = "1rem";
-
-      const optionText = document.createElement("div");
-      optionText.textContent = opt;
-      optionText.style.fontWeight = "600";
-      optionText.style.marginBottom = "0.2rem";
-      wrapper.appendChild(optionText);
-
-      const row = document.createElement("div");
-      row.style.display = "flex";
-      row.style.alignItems = "center";
-      row.style.gap = "0.6rem";
-
-      const barContainer = document.createElement("div");
-      barContainer.className = "bar-container";
-      barContainer.style.flex = "1";
-
-      const bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.width = pct + "%";
-
-      const label = document.createElement("div");
-      label.className = "bar-label";
-      label.textContent = count;
-
-      barContainer.appendChild(bar);
-      barContainer.appendChild(label);
-
-      const votesText = document.createElement("div");
-      votesText.textContent = `${pct}%`;
-      votesText.style.minWidth = "40px";
-      votesText.style.fontWeight = "600";
-
-      row.appendChild(barContainer);
-      row.appendChild(votesText);
-
-      wrapper.appendChild(row);
-      optionsContainer.appendChild(wrapper);
-    });
-
-    totals.textContent = `Total votes: ${totalVotes}`;
-  }
-
-  renderOptions();
+  updateCounts(); // load initial counts
 }

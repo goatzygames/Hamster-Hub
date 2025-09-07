@@ -45,6 +45,37 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
   font-weight: 600;
 }
 
+#vote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.vote-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #5c8d77; /* forest-green */
+}
+
+button:hover {
+  color: #a9cbb7; /* soft-green */
+}
+
+span {
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+}
 
 </style>
 </head>
@@ -64,19 +95,21 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
   });
 </script>
 
-<!-- Where poll will render -->
-<div id="voting"></div>
+<div id="vote-container">
+  <h3>Do you like this page?</h3>
+  <div class="vote-buttons">
+    <button id="upvote">▲</button>
+    <span id="upvote-count">0</span>
+    <button id="downvote">▼</button>
+    <span id="downvote-count">0</span>
+  </div>
+</div>
 
 <script type="module">
-  import { createPoll } from "./poll.js";
-
-  createPoll({
-    containerId: "voting",
-    pollId: "voting-test",
-    question: "",
-    options: ["▲", "▼"]
-  });
+  import { createVote } from './votes.js';
+  createVote('vote-container', 'home-page'); // unique ID per page
 </script>
+
 
 </body>
 </html>
