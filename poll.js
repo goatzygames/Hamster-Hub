@@ -77,37 +77,51 @@ async function renderResults() {
     wrapper.style.flexDirection = "column";
     wrapper.style.marginBottom = "1rem";
 
-    // Option text above bar
+    // Option label (e.g. "Unreal Engine 5")
     const optionText = document.createElement("div");
     optionText.textContent = opt;
     optionText.style.fontWeight = "600";
     optionText.style.marginBottom = "0.2rem";
     wrapper.appendChild(optionText);
 
-    // Bar container
+    // Horizontal container: bar + percentage
+    const row = document.createElement("div");
+    row.style.display = "flex";
+    row.style.alignItems = "center";
+    row.style.gap = "0.6rem";
+
+    // Progress bar container
     const barContainer = document.createElement("div");
     barContainer.className = "bar-container";
+    barContainer.style.flex = "1"; // make bar expand
 
-    // Bar itself
     const bar = document.createElement("div");
     bar.className = "bar";
     bar.style.width = pct + "%";
 
-    // Label INSIDE the bar
-    const label = document.createElement("span");
+    // Label inside bar = vote count only
+    const label = document.createElement("div");
     label.className = "bar-label";
-    label.textContent = `${count} votes (${pct}%)`;
-    bar.appendChild(label);
+    label.textContent = count; // just number of votes
 
     barContainer.appendChild(bar);
-    wrapper.appendChild(barContainer);
+    barContainer.appendChild(label);
 
+    // Percentage text outside the bar
+    const pctText = document.createElement("div");
+    pctText.textContent = `${pct}%`;
+    pctText.style.minWidth = "40px";
+    pctText.style.fontWeight = "600";
+
+    row.appendChild(barContainer);
+    row.appendChild(pctText);
+
+    wrapper.appendChild(row);
     optionsContainer.appendChild(wrapper);
   });
 
   totals.textContent = `Total votes: ${totalVotes}`;
 }
-
 
   renderOptions();
 }
