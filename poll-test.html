@@ -58,9 +58,8 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
 <!-- Where poll will render -->
 <div id="poll"></div>
 
-<script src="/poll.js"></script>
-
 <script type="module">
+  import { createPoll } from "./poll.js";
 
   createPoll({
     containerId: "poll",
