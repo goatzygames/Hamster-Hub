@@ -51,6 +51,25 @@ h2 { font-size:2rem; margin-bottom:1.5rem; color:var(--forest-green); }
 
 #totals { margin-top:1rem; font-weight:600; }
 
+.bar {
+  height: 28px;
+  background: var(--forest-green);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* text readable */
+  font-weight: bold;
+  transition: width 0.5s ease;
+}
+
+.bar-label {
+  z-index: 1;
+  font-size: 0.9rem;
+  pointer-events: none; /* avoid blocking clicks */
+}
+
+
 </style>
 </head>
 <body>

@@ -60,49 +60,54 @@ export function createPoll({ containerId, pollId, question, options }) {
     renderResults();
   }
 
-  async function renderResults() {
-    const pollRef = ref(db, `polls/${pollId}`);
-    const snapshot = await get(pollRef);
-    const data = snapshot.val() || {};
-    const totalVotes = Object.values(data).reduce((a, b) => a + b, 0);
+async function renderResults() {
+  const pollRef = ref(db, `polls/${pollId}`);
+  const snapshot = await get(pollRef);
+  const data = snapshot.val() || {};
+  const totalVotes = Object.values(data).reduce((a, b) => a + b, 0);
 
-    optionsContainer.innerHTML = "";
+  optionsContainer.innerHTML = "";
 
-    options.forEach(opt => {
-      const count = data[opt] || 0;
-      const pct = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
+  options.forEach(opt => {
+    const count = data[opt] || 0;
+    const pct = totalVotes ? Math.round((count / totalVotes) * 100) : 0;
 
-      const wrapper = document.createElement("div");
-      wrapper.style.display = "flex";
-      wrapper.style.flexDirection = "column";
-      wrapper.style.marginBottom = "1rem";
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "flex";
+    wrapper.style.flexDirection = "column";
+    wrapper.style.marginBottom = "1rem";
 
-      const optionText = document.createElement("div");
-      optionText.textContent = opt;
-      optionText.style.fontWeight = "600";
-      optionText.style.marginBottom = "0.2rem";
-      wrapper.appendChild(optionText);
+    // Option text above bar
+    const optionText = document.createElement("div");
+    optionText.textContent = opt;
+    optionText.style.fontWeight = "600";
+    optionText.style.marginBottom = "0.2rem";
+    wrapper.appendChild(optionText);
 
-      const barContainer = document.createElement("div");
-      barContainer.className = "bar-container";
+    // Bar container
+    const barContainer = document.createElement("div");
+    barContainer.className = "bar-container";
 
-      const bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.width = pct + "%";
+    // Bar itself
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.style.width = pct + "%";
 
-      const label = document.createElement("div");
-      label.className = "bar-label";
-      label.textContent = `${count} votes (${pct}%)`;
+    // Label INSIDE the bar
+    const label = document.createElement("span");
+    label.className = "bar-label";
+    label.textContent = `${count} votes (${pct}%)`;
+    bar.appendChild(label);
 
-      barContainer.appendChild(bar);
-      barContainer.appendChild(label);
-      wrapper.appendChild(barContainer);
+    barContainer.appendChild(bar);
+    wrapper.appendChild(barContainer);
 
-      optionsContainer.appendChild(wrapper);
-    });
+    optionsContainer.appendChild(wrapper);
+  });
 
-    totals.textContent = `Total votes: ${totalVotes}`;
-  }
+  totals.textContent = `Total votes: ${totalVotes}`;
+}
+
 
   renderOptions();
 }
