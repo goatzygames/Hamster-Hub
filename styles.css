@@ -1353,3 +1353,51 @@ html {
 .vote-btn:hover {
   background-color: #ddd;
 }
+
+.vote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--light-sand);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vote-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.vote-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--forest-green);
+  margin: 0.2rem 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.vote-btn:hover {
+  color: var(--soft-green);
+  transform: scale(1.2);
+}
+
+.vote-btn.active-up {
+  color: var(--soft-green);
+}
+
+.vote-btn.active-down {
+  color: var(--warm-brown);
+}
+
+.vote-count {
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--dark-text);
+  margin: 0.2rem 0;
+}
