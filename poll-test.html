@@ -27,6 +27,42 @@ span {
   text-align: center;
 }
 
+.vote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  font-family: sans-serif;
+}
+
+.vote-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.vote-btn.active-up {
+  color: #ff4500; /* upvote color */
+}
+
+.vote-btn.active-down {
+  color: #7193ff; /* downvote color */
+}
+
+.vote-btn:hover {
+  color: #333;
+}
+
+.vote-count {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 2px 0;
+}
+
 </style>
 </head>
 <body>
@@ -45,9 +81,10 @@ span {
   });
 </script>
 
-<div id="vote-container" style="display: flex; gap: 20px; align-items: center;">
-  <button id="upvote" class="vote-btn">👍 <span id="upvote-count">0</span></button>
-  <button id="downvote" class="vote-btn">👎 <span id="downvote-count">0</span></button>
+<div id="vote-container" class="vote-container">
+  <button id="upvote" class="vote-btn">▲</button>
+  <div id="vote-count" class="vote-count">0</div>
+  <button id="downvote" class="vote-btn">▼</button>
 </div>
 
 <script type="module">
