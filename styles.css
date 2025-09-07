@@ -1286,3 +1286,53 @@ html {
   padding: 2rem;
   max-width: 900px; /* keeps text centered/narrower */
 }
+
+/* Poll Styling */
+
+.options-container { display:flex; flex-direction:column; gap:1rem; width:320px; }
+
+.option-card {
+  background: var(--light-sand);
+  border-radius:12px;
+  padding:1rem 1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight:600;
+  color:var(--dark-text);
+  font-size:1rem;
+}
+.option-card:hover { transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,0.1); }
+
+.bar-container { width:100%; background:#eee; border-radius:12px; height:28px; position:relative; margin-bottom:0.8rem; overflow:hidden; }
+.bar { height:100%; background:var(--forest-green); width:0%; border-radius:12px; transition: width 0.5s ease; }
+.bar-label { position:absolute; width:100%; text-align:center; line-height:28px; color:var(--dark-text); font-weight:700; }
+.bar-label {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height: 28px;
+  font-weight:700;
+  color: var(--light-text); /* contrast on dark bar */
+}
+
+
+#totals { margin-top:1rem; font-weight:600; }
+
+.bar {
+  height: 28px;
+  background: var(--forest-green);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* text readable */
+  font-weight: bold;
+  transition: width 0.5s ease;
+}
+
+.bar-label {
+  z-index: 1;
+  font-size: 0.9rem;
+  pointer-events: none; /* avoid blocking clicks */
+}

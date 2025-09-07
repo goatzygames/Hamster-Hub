@@ -77,14 +77,14 @@ async function renderResults() {
     wrapper.style.flexDirection = "column";
     wrapper.style.marginBottom = "1rem";
 
-    // Option label (e.g. "Unreal Engine 5")
+    // Option label
     const optionText = document.createElement("div");
     optionText.textContent = opt;
     optionText.style.fontWeight = "600";
     optionText.style.marginBottom = "0.2rem";
     wrapper.appendChild(optionText);
 
-    // Horizontal container: bar + percentage
+    // Row container (bar + percentage)
     const row = document.createElement("div");
     row.style.display = "flex";
     row.style.alignItems = "center";
@@ -93,21 +93,23 @@ async function renderResults() {
     // Progress bar container
     const barContainer = document.createElement("div");
     barContainer.className = "bar-container";
-    barContainer.style.flex = "1"; // make bar expand
+    barContainer.style.flex = "1"; // expand
 
     const bar = document.createElement("div");
     bar.className = "bar";
     bar.style.width = pct + "%";
 
-    // Label inside bar = vote count only
+    // Vote count inside the bar
     const label = document.createElement("div");
     label.className = "bar-label";
-    label.textContent = count; // just number of votes
+    label.textContent = count;  // just number
+    label.style.color = "#fff"; // make sure it's readable
+    label.style.fontWeight = "700";
 
     barContainer.appendChild(bar);
     barContainer.appendChild(label);
 
-    // Percentage text outside the bar
+    // Percentage outside bar
     const pctText = document.createElement("div");
     pctText.textContent = `${pct}%`;
     pctText.style.minWidth = "40px";
