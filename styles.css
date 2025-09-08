@@ -1373,6 +1373,7 @@ html {
 }
 
 .vote-btn {
+  all: unset;
   background: none;
   border: none;
   font-size: 22px;
@@ -1399,5 +1400,32 @@ html {
   font-weight: bold;
   font-size: 16px;
   color: var(--dark-text);
+  margin: 0.2rem 0;
+}
+
+.vote-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+.vote-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.vote-btn:hover {
+  color: orange; /* highlight on hover */
+}
+
+.vote-count {
+  font-weight: bold;
+  font-size: 1rem;
   margin: 0.2rem 0;
 }
