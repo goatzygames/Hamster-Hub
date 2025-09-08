@@ -57,6 +57,19 @@ permalink: /enclosure/
 <!-- Text Overview -->
 <section class="care-section overview">
     <h1 class="care-page-title" style="font-size: 3.5rem;">Enclosure</h1>
+
+    <!-- Voting widget right below the title -->
+    <div id="vote-container" class="vote-container">
+      <button id="upvote" class="vote-btn">▲</button>
+      <div id="vote-count" class="vote-count">0</div>
+      <button id="downvote" class="vote-btn">▼</button>
+    </div>
+
+    <script type="module">
+      import { createVote } from './votes.js';
+      createVote('vote-container', 'enclosure-page'); // unique ID for this page
+    </script>
+
     <p class="care-intro">How to Get a Hamster Enclosure</p>
     <p class="care-intro" style="font-weight: 600;">A complete guide on making/getting a hamster's enclosure</p>
 </section>
