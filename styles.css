@@ -1405,7 +1405,7 @@ html {
 
 .vote-container {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   font-size: 1.2rem;
   margin-right: 0.5rem;
