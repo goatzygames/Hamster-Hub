@@ -1429,3 +1429,50 @@ html {
   font-size: 1rem;
   margin: 0.2rem 0;
 }
+
+.vote-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--light-sand);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px; /* pill shape */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vote-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.vote-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #5c8d77;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.vote-btn:hover {
+  color: #a9cbb7;
+  transform: scale(1.2);
+}
+
+.vote-btn.active-up {
+  color: #0ca05d; /* soft green highlight */
+}
+
+.vote-btn.active-down {
+  color: #b95c5c; /* warm reddish tone */
+}
+
+.vote-count {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2d3748;
+  min-width: 2ch;
+  text-align: center;
+}
