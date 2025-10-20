@@ -1356,7 +1356,7 @@ html {
 
 .vote-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 50px;
   font-family: "Segoe UI", sans-serif;
